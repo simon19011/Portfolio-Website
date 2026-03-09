@@ -7,7 +7,7 @@
         <!--Makes site more responsive on mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Description for search engines-->
-        <meta name="description" content="Simon Ly's Software Porfolio - Software Stack and Game Design">
+        <meta name="description" content="Simon Ly's Software Portfolio - Software Stack and Game Design">
         <!--Author name for search engines-->
         <meta name="author" content="Simon Ly">
         
@@ -16,7 +16,112 @@
     </head>
     
     <body>
+        <header id="home">
+            <nav>
+                <a href="#title">title (logo)</a>
+                <a href="#about">About Me</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contacts</a>
+                <a href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a>
+            </nav>
 
+            <div class="title">
+                <h1>Simon Ly</h1>
+                <p>Software Developer</p>
+                <p>Game Developer</p>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <!--Image of me?-->
+            <p>
+                Hi! I'm Simon Ly, a Software Developer and a Computer Science (Honours) student based in Sydney, Australia. 
+                I love creating projects and software solutions that help solve my everyday problems and have a 
+                vested interest in developing video games on the side. I'm hoping to develop my skills in software development and 
+                eventually launch my own indie game! 
+            </p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-carousel">
+                <article class="project" data-category="software" data-languages="html js css">
+                    <h3>Music Crossfade</h3>
+                    <p>
+                        A web music player that allows users to fade from one song to the next. Upload a song file or search a YouTube URl
+                        (through YouTube's oEmbed Endpoint API) to add to the queue! The app is capable of saving songs to the 
+                        local broswer database (IndexedDB) for cross session play.
+                    </p>
+                </article>
+
+                <article class="project" data-category="software" data-languages="html js js(p5js) css">
+                    <h3>Weekly p5js Creative Projects</h3>
+                    <p>
+                        A collection of creative interactive projects based on prompts given weekly in an Interactive Media class. 
+                        Each project was created over a week with a final project created over a couple weeks. 
+                    </p>
+                </article>
+            </div>
+
+            <div class="project-filters">
+                <!--Possible JS implemetation, have All start in middle dynamically and added fitlers go left then right, etc.-->
+                <button data-filter="all">All</button>
+                <button data-filter="game">Game Dev</button>
+                <button data-filter="software">Software Dev</button>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+
+            <div class="skills-container">
+
+                <div class="skills-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>C#</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C++</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>Frameworks</h3>
+                    <ul>
+                        <li>p5.js</li>
+                    </ul>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>Unity</li>
+                        <li>VSCode</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <p>Email: simon.lyogs@gmail.com</p>
+            <a href="https://github.com/simon19011" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/simon-ly-460a662a4/" target="_blank">LinkedIn</a>
+            <a href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a>
+        </section>
+
+        <footer>
+
+        </footer>
     </body>
 
 </html>
