@@ -6,6 +6,11 @@
     --font-size: 26px;
 }
 
+@font-face {
+    font-family: 'SpecialFont';
+    src: url('assets/EldritchVanguardBold-9Mp70.otf') format('opentype');
+}
+
 html {
     scroll-behavior: smooth;
     background-color: var(--background-color);
@@ -55,6 +60,7 @@ h2 {
 }
 
 .hero h1 {
+    font-family: 'SpecialFont', sans-serif;
     font-size: 4rem; /*rem = Root EM*/
     margin: 0;
 }
