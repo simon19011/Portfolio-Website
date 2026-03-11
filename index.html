@@ -7,18 +7,20 @@
         <!--Makes site more responsive on mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Description for search engines-->
-        <meta name="description" content="Simon Ly's Software Portfolio - Software Stack and Game Design">
+        <meta name="description" content="Simon Ly Software Portfolio - Software Stack and Game Design">
         <!--Author name for search engines-->
         <meta name="author" content="Simon Ly">
+
+        <title>Simon Ly | Software Developer & Game Developer</title>
         
         <link rel="stylesheet" href="styles.css">
-        <link rel="icon" href="favicon.ico">
+        <link rel="icon" href="assets/favicon.ico">
     </head>
     
     <body>
         <header id="home">
             <nav>
-                <a href="#title">title (logo)</a>
+                <a href="#home">home (logo)</a>
                 <a href="#about">About Me</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
@@ -26,7 +28,7 @@
                 <a href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a>
             </nav>
 
-            <div class="title">
+            <div class="hero">
                 <h1>Simon Ly</h1>
                 <p>Software Developer</p>
                 <p>Game Developer</p>
@@ -50,9 +52,9 @@
                 <article class="project" data-category="software" data-languages="html js css">
                     <h3>Music Crossfade</h3>
                     <p>
-                        A web music player that allows users to fade from one song to the next. Upload a song file or search a YouTube URl
-                        (through YouTube's oEmbed Endpoint API) to add to the queue! The app is capable of saving songs to the 
-                        local broswer database (IndexedDB) for cross session play.
+                        A web music player that allows users to fade from one song to the next. Upload a song file or search a YouTube URL
+                        (implemented through YouTube's oEmbed Endpoint API) to add to the queue! The app is capable of saving songs to the 
+                        local browser database (IndexedDB) for cross session play.
                     </p>
                 </article>
 
@@ -66,7 +68,7 @@
             </div>
 
             <div class="project-filters">
-                <!--Possible JS implemetation, have All start in middle dynamically and added fitlers go left then right, etc.-->
+                <!--Possible JS implementation, have All start in middle dynamically and added filters go left then right, etc.-->
                 <button data-filter="all">All</button>
                 <button data-filter="game">Game Dev</button>
                 <button data-filter="software">Software Dev</button>
@@ -112,15 +114,19 @@
             </div>
         </section>
 
-        <section id="contact">
-            <p>Email: simon.lyogs@gmail.com</p>
-            <a href="https://github.com/simon19011" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/simon-ly-460a662a4/" target="_blank">LinkedIn</a>
-            <a href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a>
+        <section id="contacts">
+            <h2>Contacts</h2>
+
+            <ul>
+                <li>Email: <a href="mailto:simon.lyogs@gmail.com">simon.lyogs@gmail.com</a></li>
+                <li><a href="https://github.com/simon19011" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/simon-ly-460a662a4/" target="_blank">LinkedIn</a></li>
+                <li><a href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a></li>
+            </ul>
         </section>
 
         <footer>
-
+            <p>© 2026 Simon Ly</p>
         </footer>
     </body>
 
