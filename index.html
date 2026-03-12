@@ -20,12 +20,12 @@
     <body>
         <header id="home">
             <nav>
-                <a href="#home">home (logo)</a>
-                <a href="#about">About Me</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contacts</a>
-                <a href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a>
+                <a class="nav-links" href="#home">home (logo)</a>
+                <a class="nav-links" href="#about">About Me</a>
+                <a class="nav-links" href="#projects">Projects</a>
+                <a class="nav-links" href="#skills">Skills</a>
+                <a class="nav-links" href="#contacts">Contacts</a>
+                <a class="nav-links" href="assets/Simon_Ly_Resume.pdf" target="_blank">Resume</a>
             </nav>
 
             <div class="hero">
@@ -50,7 +50,7 @@
             <h2>Projects</h2>
             <div class="project-carousel">
                 <article class="project" data-category="software" data-languages="html js css">
-                    <h3>Music Crossfade</h3>
+                    <h3>Music Crossfade Web App</h3>
                     <p>
                         A web music player that allows users to fade from one song to the next. Upload a song file or search a YouTube URL
                         (implemented through YouTube's oEmbed Endpoint API) to add to the queue! The app is capable of saving songs to the 
@@ -65,13 +65,20 @@
                         Each project was created over a week with a final project created over a couple weeks. 
                     </p>
                 </article>
+
+                <article class="project" data-category="game" data-languages="c# unity">
+                    <h3>Game Test</h3>
+                    <p>
+                    Testing filter. Game fitler.
+                    </p>
+                </article>
             </div>
 
             <div class="project-filters">
                 <!--Possible JS implementation, have All start in middle dynamically and added filters go left then right, etc.-->
-                <button data-filter="all">All</button>
-                <button data-filter="game">Game Dev</button>
-                <button data-filter="software">Software Dev</button>
+                <button data-filter="all" class="filter-button active center">All</button>
+                <button data-filter="game" class="filter-button">Games</button>
+                <button data-filter="software" class="filter-button">Software</button>
             </div>
         </section>
 
@@ -128,6 +135,8 @@
         <footer>
             <p>© 2026 Simon Ly</p>
         </footer>
+
+        <script type="module" src="js/main.js"></script>
     </body>
 
 </html>
