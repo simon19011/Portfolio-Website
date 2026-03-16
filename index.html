@@ -48,30 +48,42 @@
 
         <section id="projects">
             <h2>Projects</h2>
-            <div class="project-carousel">
-                <article class="project" data-category="software" data-languages="html js css">
-                    <h3>Music Crossfade Web App</h3>
-                    <p>
-                        A web music player that allows users to fade from one song to the next. Upload a song file or search a YouTube URL
-                        (implemented through YouTube's oEmbed Endpoint API) to add to the queue! The app is capable of saving songs to the 
-                        local browser database (IndexedDB) for cross session play.
-                    </p>
-                </article>
+            <div class="carousel-wrapper">
+                <button class="carousel-button carousel-left"><</button>
+                <div class="project-carousel">
+                    <div class="all-projects">
+                        <article class="project" data-category="software" data-languages="html js css">
+                            <div class="project-text">
+                                <h3 class="project-title">Music Crossfade Web App</h3>
+                                <p class="project-description">
+                                    A web music player that allows users to fade from one song to the next. Upload a song file or search a YouTube URL
+                                    (implemented through YouTube's oEmbed Endpoint API) to add to the queue! The app is capable of saving songs to the 
+                                    local browser database (IndexedDB) for cross session play.
+                                </p>
+                            </div>
+                        </article>
 
-                <article class="project" data-category="software" data-languages="html js js(p5js) css">
-                    <h3>Weekly p5js Creative Projects</h3>
-                    <p>
-                        A collection of creative interactive projects based on prompts given weekly in an Interactive Media class. 
-                        Each project was created over a week with a final project created over a couple weeks. 
-                    </p>
-                </article>
+                        <article class="project" data-category="software" data-languages="html js js(p5js) css">
+                            <div class="project-text">   
+                                <h3 class="project-title">Weekly p5js Creative Projects</h3>
+                                <p class="project-description">
+                                    A collection of creative interactive projects based on prompts given weekly in an Interactive Media class. 
+                                    Each project was created over a week with a final project created over a couple weeks. 
+                                </p>
+                            </div>
+                        </article>
 
-                <article class="project" data-category="game" data-languages="c# unity">
-                    <h3>Game Test</h3>
-                    <p>
-                    Testing filter. Game fitler.
-                    </p>
-                </article>
+                        <article class="project" data-category="game" data-languages="c# unity">
+                            <div class="project-text">
+                                <h3 class="project-title">Game Test</h3>
+                                <p class="project-description">
+                                    Testing filter. Game fitler.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <button class="carousel-button carousel-right">></button>
             </div>
 
             <div class="project-filters">

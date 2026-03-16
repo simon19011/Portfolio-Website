@@ -54,14 +54,15 @@ function setupFiltering() {
             const filter = button.dataset.filter;
 
             projects.forEach(project => {
-                if (filter === "all") {
-                    project.style.display = "block";
+                if (filter === "all" || project.dataset.category === filter) {
+                    project.classList.remove("hidden");
                 }
 
                 else {
-                    project.style.display = project.dataset.category === filter ? "block" : "none";
+                    project.classList.add("hidden");
                 }
             });
+            document.dispatchEvent(new CustomEvent('projectsFiltered'));
         });
     });
 }

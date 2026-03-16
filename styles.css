@@ -42,6 +42,7 @@ h2 {
 }
 
 #home nav {
+    z-index: 10;
     position: fixed;
     top: 0;
     width: 100%;
@@ -107,32 +108,129 @@ h2 {
     gap: 20px;
 }
 
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+    color: var(--link-hover-color);
+    transform: translateY(-50%) scale(1.2);
+}
+
+.carousel-left {
+    left: 10px;
+}
+
+.carousel-right {
+    right: 10px;
+}
 .project-carousel {
+    position: relative;
     min-height: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 40px;
     perspective: 1000px;
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 0 0 0;
+}
+
+.all-projects {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    overflow: visible;
+    transition: all 0.5s ease;
 }
 
 .project {
+    background: var(--background-color);
+    position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
     flex: 0 0 auto;
-    width: 200px;
+    justify-content: center;
+    width: 185px;
     height: 500px;
     border: 3px solid;
-    border-radius: 5px;
     padding: 20px;
-    transition: all 0.35s ease;
-    transform-style: preserve-3d;
+    overflow: hidden;
+    transform: translateX(var(--x, 0));;
+    transition: scale 0.35s ease, 
+                transform 0.35s ease,
+                height 0.35s ease,
+                width 0.35s ease 0.35s;
+}
+
+.project-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.project-description {
+    opacity: 0;
+    font-size: 0.75rem;
+    transition: opacity 0.25s ease 0.7s;
+}
+
+.project.expanded {
+    height: 550px;
+    width: 420px;
+}
+
+.project.expanded .project-description {
+    opacity: 1;
 }
 
 .project:hover {
     cursor: pointer;
-    transform: scale(1.05) translateZ(20px);
     box-shadow: 0 20px 30px #0000007a;
+}
+
+
+.project.position-center {
+    transform: translateX(var(--x)) scale(1);
+    z-index: 3;
+}
+
+.project.position-center:hover {
+    transform: translateX(var(--x)) translateZ(20px) scale(1.1);
+}
+
+.project.position-adjacent {
+    transform: translateX(var(--x)) scale(0.85);
+    z-index: 2;
+}
+
+.project.position-adjacent:hover {
+    transform: translateX(var(--x)) translateZ(20px) scale(0.95);
+}
+
+.project.position-far {
+    transform: translateX(var(--x)) scale(0.7);
+    z-index: 1;
+}
+
+.project.position-far:hover {
+    transform: translateX(var(--x)) translateZ(20px) scale(0.8);
 }
 
 .project-filters {
