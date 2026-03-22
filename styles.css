@@ -111,7 +111,6 @@ h2 {
 .carousel-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -143,7 +142,7 @@ h2 {
 }
 .project-carousel {
     position: relative;
-    min-height: 625px;
+    min-height: 610px;
     perspective: 1000px;
     overflow: hidden;
     width: 100%;
@@ -226,6 +225,9 @@ h2 {
     text-align: left;
     height: 100%;
     padding: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .project-title {

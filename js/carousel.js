@@ -22,6 +22,12 @@ export function initCarousel() {
         animating = false;
     });
 
+    document.querySelectorAll(".project-button").forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+    });
+
     document.querySelector(".carousel-left").addEventListener("click", () => {
         if (animating) return;
         moveCarousel(-1);
