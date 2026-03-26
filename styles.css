@@ -2,8 +2,9 @@
 
 :root {
     --background-color: #000000;
-    --text-color: #9E7E57;
-    --link-hover-color: #d5bfa4;
+    --text-color-heading: #9F8B59;
+    --text-color: #785737;
+    --link-hover-color: #e9dbbd;
     --font-size: 26px;
 }
 
@@ -19,8 +20,10 @@ html {
     font-size: var(--font-size);
 }
 
-body > * {
-    padding: 25px 25px;
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -28,9 +31,27 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    color: var(--text-color-heading);
+}
+
 h2 {
+    position: relative;
     font-size: 2rem;
     font-family: 'SpecialFont';
+    color: var(--text-color-heading);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 130%;
+    height: 2px;
+    background-color: var(--text-color-heading);
+    border-radius: 2px;
+    transform: translateX(-50%);
 }
 
 /*----------HOME----------*/
@@ -209,8 +230,8 @@ h2 {
     transition: opacity 0.35s ease,
                 scale 0.35s ease, 
                 transform 0.35s ease,
-                height 0.35s ease 1.35s,
-                width 0.35s ease 1s;
+                height 0.35s ease 1.7s,
+                width 0.35s ease 1.35s;
 }
 
 .project:hover {
@@ -253,60 +274,98 @@ h2 {
 }
 
 .project:not(.expanded) .project-description {
-    transition: opacity 0.15s ease 0.6s,
-                max-height 0.35s ease 0.6s;
+    transition: opacity 0.15s ease 0.9s,
+                max-height 0.35s ease 0.9s;
 }
 
 .project-button-container {
-    height: 0;
-    padding: 10px 10px 50px 0;
-    transition: all 0.7s ease 1.35s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    transform: scale(0.8);
+    transform-origin: left;
+    transition: 
+        max-height 0.4s ease 0.5s,
+        opacity 0.3s ease 0.5s,
+        transform 0.3s ease 0.5s,
+        padding 0.3s ease 0.5s;
 }
 
-.project:not(.expanded) .project-button-container {
-    height: 0;
-    padding: 0;
-    transition: all 0.7s ease;
+.project.expanded .project-button-container {
+    max-height: 120px;
+    opacity: 1;
+    padding: 0 0 15px 0;
+    transform: scale(1);
+    transition: max-height 0.4s ease 1.35s,
+                opacity 0.3s ease 1.35s,
+                transform 0.3s ease 1.35s,
+                padding 0.3s ease 1.35s;
 }
 
 .project-button {
     background-color: var(--text-color);
-    color: #000000;
-    font-size: 0.7rem;
-    padding: 4px;
     opacity: 0;
-    min-height: 0;
-    min-width: 0;
-    border: 2px solid var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
     border-radius: 20px;
-    text-align: center ;
-    transition: all 0.35s ease 1.35s;
-}
-
-.project-button:hover {
-    cursor: pointer;
+    transform: scale(0);
+    transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .project.expanded .project-button {
+    transform: scale(1);
     opacity: 1;
-    min-height: 40px;
-    min-width: 40px;
+    transition: transform 0.25s ease, opacity 0.35s ease;
 }
 
 .project:not(.expanded) .project-button {
-    min-height: 0;
-    min-width: 0;
-    font-size: 0;
+    transform: scale(0);
     padding: 0;
-    transition: all 0.35s ease;
+    transition-delay: 0s;
+}
+
+.project.expanded .project-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-delay: 0s;
+    background-color: var(--text-color-heading);
+}
+
+.project-button.github::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: var(--background-color);
+    mask: url('assets/icons/github.svg') no-repeat center;
+    mask-size: contain;
+    -webkit-mask: url('assets/icons/github.svg') no-repeat center;
+    -webkit-mask-size: contain;
+}
+
+.project-button.link::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: var(--background-color);
+    mask: url('assets/icons/link.svg') no-repeat center;
+    mask-size: contain;
+    -webkit-mask: url('assets/icons/link.svg') no-repeat center;
+    -webkit-mask-size: contain;
 }
 
 .project.position-center {
     transform: translateX(var(--x)) scale(1);
     z-index: 3;
+    color: var(--text-color-heading);
 }
 
-.project.position-center:hover {
+.project:not(.expanded).position-center:hover {
     transform: translateX(var(--x)) translateZ(20px) scale(1.1);
 }
 
@@ -412,10 +471,22 @@ h2 {
     text-align: center;
 }
 
+.contact-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-single-link:hover {
+    color: var(--link-hover-color);
+}
+
 /*----------FOOTER----------*/
 
 footer {
-    justify-content: center;
-    align-items: center;
+    background-color: var(--text-color);
+    color: var(--background-color);
     text-align: center;
+    width: 100%;
+    margin-top: auto;
+    font-size: 0.8rem;
 }

@@ -45,11 +45,13 @@ export function initCarousel() {
             if (clickedIndex === -1) return;
 
             if (clickedIndex === currentIndex) {
-                project.classList.toggle("expanded");
-                expanded = project.classList.contains("expanded");
+                if (expanded === false) {
+                    project.classList.toggle("expanded");
+                    expanded = project.classList.contains("expanded");
+                }
                 return;
             }
-        
+            
             const total = projects.length;
             let offset = clickedIndex - currentIndex;
 
