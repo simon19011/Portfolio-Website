@@ -463,21 +463,73 @@ h2::after {
 /*----------CONTACTS----------*/
 
 #contacts {
-    min-height: 25vh;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     text-align: center;
+    overflow: hidden;
 }
 
 .contact-links {
     display: flex;
-    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-direction: row;
+    padding: 50px;
+    white-space: nowrap;
 }
 
-.contact-single-link:hover {
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item:hover {
     color: var(--link-hover-color);
+    cursor: pointer;
+}
+
+.contact-item:hover::before {
+    background-color: var(--link-hover-color);
+}
+
+.contact-item::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-color);
+}
+
+.contact-item.email::before {
+    mask: url('assets/icons/email.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/icons/email.svg') no-repeat center / contain;
+}
+
+.contact-item.github::before {
+    mask: url('assets/icons/github.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/icons/github.svg') no-repeat center / contain;
+}
+
+.contact-item.linkedin::before {
+    mask: url('assets/icons/linkedin.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/icons/linkedin.svg') no-repeat center / contain;
+}
+
+.contact-item.resume::before {
+    mask: url('assets/icons/resume.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/icons/resume.svg') no-repeat center / contain;
+}
+
+@media (max-width: 900px) {
+    .contact-links {
+        flex-direction: column;
+        white-space: normal;
+    }
 }
 
 /*----------FOOTER----------*/
@@ -489,4 +541,7 @@ footer {
     width: 100%;
     margin-top: auto;
     font-size: 0.8rem;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
