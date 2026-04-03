@@ -1,7 +1,7 @@
 /*----------GLOBAL----------*/
 
 :root {
-    --background-color: #000000;
+    --background-color: #040404;
     --text-color-heading: #9F8B59;
     --text-color: #785737;
     --link-hover-color: #e9dbbd;
@@ -47,11 +47,25 @@ h2::after {
     position: absolute;
     bottom: -15px;
     left: 50%;
-    width: 130%;
+    width: 165%;
     height: 2px;
-    background-color: var(--text-color-heading);
+    background: linear-gradient(
+            to right, 
+            transparent, 
+            var(--text-color-heading), 
+            transparent);
     border-radius: 2px;
     transform: translateX(-50%);
+}
+
+section {
+    /* border-top: 2px solid transparent;
+    border-image: linear-gradient(
+            to right, 
+            transparent, 
+            var(--text-color-heading), 
+            transparent) 1; */
+    padding: 40px;
 }
 
 /*----------HOME----------*/
@@ -398,9 +412,13 @@ h2::after {
     position: absolute;
     top: -10px;
     left: 50%;
-    width: 120%;
+    width: 190%;
     height: 1px;
-    background-color: var(--link-hover-color);
+    background: linear-gradient(
+            to right, 
+            transparent, 
+            var(--text-color-heading), 
+            transparent);
     transform: translateX(-50%);
 }
 
@@ -479,7 +497,6 @@ h2::after {
     align-items: center;
     gap: 50px;
     flex-direction: row;
-    padding: 50px;
     white-space: nowrap;
 }
 
