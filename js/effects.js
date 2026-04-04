@@ -2,6 +2,7 @@ export function initEffects() {
     heroEffects();
 }
 
+// Particle effects for the hero
 function heroEffects() {
     const canvas = document.getElementById("hero-canvas");
     const ctx = canvas.getContext("2d");
@@ -252,3 +253,4 @@ function heroEffects() {
 
     animate();
 }
+

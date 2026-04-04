@@ -66,12 +66,13 @@ section {
             var(--text-color-heading), 
             transparent) 1; */
     padding: 40px;
+    min-height: 100vh; /*vh = Viewport Height*/
 }
 
 /*----------HOME----------*/
 
 #home {
-    min-height: 100vh; /*vh = Viewport Height*/
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -142,10 +143,27 @@ section {
     z-index: 2;
 }
 
+.hero-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+    padding: 50px 0 0 0;
+}
+
+.hero-link {
+    background-color: var(--text-color-heading);
+    color: #000000;
+    padding: 10px 50px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
 /*----------ABOUT----------*/
 
 #about {
-    min-height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -490,7 +508,6 @@ section {
 /*----------SKILLS----------*/
 
 #skills {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -501,7 +518,6 @@ section {
 /*----------CONTACTS----------*/
 
 #contacts {
-    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: top;
