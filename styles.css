@@ -102,6 +102,13 @@ section {
 }
 
 .hero {
+    background: linear-gradient(
+        to right, 
+        #1d170d,
+        #000000 
+    );
+    position: relative;
+    overflow: hidden;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -120,6 +127,19 @@ section {
 .hero p {
     font-size: 1.2rem;
     margin: 0;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 /*----------ABOUT----------*/
