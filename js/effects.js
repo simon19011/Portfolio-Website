@@ -23,9 +23,9 @@ function heroEffects() {
     };
 
     const particle_parameters = {
-        count: 1000,
+        count: 2000,
         minSize: 0.01,
-        maxSize: 1.5,
+        maxSize: 1,
         maxSpeed: 0.2,
         driftStrength: 0.01,
         friction: 0.95,
@@ -35,7 +35,7 @@ function heroEffects() {
 
     const clouds = [];
     const particles = [];
-    const mouse = { x: null, y: null, radius: 120 };
+    const mouse = { x: null, y: null, radius: 200 };
     let frame = 0;
     let glitchEffect = false;
 
@@ -87,8 +87,8 @@ function heroEffects() {
         const hueVariance = 5;
         const baseSaturation = 0.6;
         const satVariance = 0.6;
-        const baseLightness = 0.7;
-        const lightVariance = 0.3;
+        const baseLightness = 0.85;
+        const lightVariance = 0.1;
 
         const h = baseHue + (Math.random() - 0.5) * hueVariance;
         const s = Math.min(1, Math.max(0, baseSaturation + (Math.random() - 0.5) * satVariance));
@@ -180,7 +180,7 @@ function heroEffects() {
 
             const centerX = width / 2;
             const centerY = height / 2;
-            const pullStrength = 0.000005;
+            const pullStrength = 0.0000005;
             cloud.vx += (centerX - cloud.x) * pullStrength;
             cloud.vy += (centerY - cloud.y) * pullStrength;
 

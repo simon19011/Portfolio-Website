@@ -4,7 +4,7 @@
     --background-color: #040404;
     --text-color-heading: #9F8B59;
     --text-color: #785737;
-    --link-hover-color: #e9dbbd;
+    --link-hover-color: #f0e8d7;
     --font-size: 26px;
 }
 
@@ -150,15 +150,42 @@ section {
     align-items: center;
     text-align: center;
     gap: 100px;
-    padding: 50px 0 0 0;
+    padding: 100px 0 0 0;
 }
 
 .hero-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background-color: var(--text-color-heading);
     color: #000000;
-    padding: 10px 50px;
-    border-radius: 15px;
+    padding: 10px 40px;
     cursor: pointer;
+    gap: 10px;
+    transition: all 0.35s ease;
+}
+
+.hero-link:hover {
+    transform: scale(1.05);
+    background-color: var(--link-hover-color);
+}
+
+.hero-link::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+}
+
+.hero-link.github::before {
+    mask: url('assets/icons/github.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/icons/github.svg') no-repeat center / contain;
+}
+
+.hero-link.resume::before {
+    mask: url('assets/icons/resume.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/icons/resume.svg') no-repeat center / contain;
 }
 
 /*----------ABOUT----------*/
@@ -257,7 +284,6 @@ section {
     width: 185px;
     height: 500px;
     border: 3px solid;
-    border-radius: 7px 7px 30px 30px;
     padding: 20px 20px 0 20px;
     overflow: hidden;
     transform: translateX(var(--x, 0));;
@@ -305,17 +331,18 @@ section {
 
 .project-title {
     margin: 0;
+    font-size: 1.3rem;
 }
 
 .project-description {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
 }
 
 .project.expanded .project-description {
-    opacity: 1;
+    opacity: 0.65;
     max-height: 200px;
     transition: opacity 0.15s ease,
                 max-height 0.35s ease 1s;
@@ -333,7 +360,7 @@ section {
 .project-button-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     max-height: 0;
     opacity: 0;
     padding: 0;
@@ -358,16 +385,16 @@ section {
 }
 
 .project-button {
-    background-color: var(--text-color);
+    border: 2px solid var(--text-color-heading);
+    font-size: 0.75rem;
     opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 20px;
+    padding: 5px 12px 5px 12px;
+    gap: 7px;
     transform: scale(0);
-    transition: transform 0.35s ease, opacity 0.35s ease;
+    transition: all 0.35s ease;
 }
 
 .project.expanded .project-button {
@@ -387,24 +414,34 @@ section {
     transform: scale(1.1);
     transition-delay: 0s;
     background-color: var(--text-color-heading);
+    color: var(--background-color);
 }
 
-.project-button.github::after {
+.project-button::before {
     content: "";
     width: 30px;
     height: 30px;
+    background-color: var(--text-color-heading);
+}
+
+.project.expanded .project-button:hover::before {
     background-color: var(--background-color);
+}
+
+.project-button.github::before {
+    content: "";
+    width: 30px;
+    height: 30px;
     mask: url('assets/icons/github.svg') no-repeat center;
     mask-size: contain;
     -webkit-mask: url('assets/icons/github.svg') no-repeat center;
     -webkit-mask-size: contain;
 }
 
-.project-button.link::after {
+.project-button.link::before {
     content: "";
     width: 30px;
     height: 30px;
-    background-color: var(--background-color);
     mask: url('assets/icons/link.svg') no-repeat center;
     mask-size: contain;
     -webkit-mask: url('assets/icons/link.svg') no-repeat center;
