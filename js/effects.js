@@ -23,19 +23,19 @@ function heroEffects() {
     };
 
     const particle_parameters = {
-        count: 2000,
+        count: 4000,
         minSize: 0.01,
-        maxSize: 1,
+        maxSize: 1.2,
         maxSpeed: 0.2,
         driftStrength: 0.01,
         friction: 0.95,
-        mouseForce: 1.5,
+        mouseForce: 10,
         spawnRadiusFactor: 1.2
     };
 
     const clouds = [];
     const particles = [];
-    const mouse = { x: null, y: null, radius: 200 };
+    const mouse = { x: null, y: null, radius: 50 };
     let frame = 0;
     let glitchEffect = false;
 
@@ -142,12 +142,19 @@ function heroEffects() {
         });
     }
 
-    window.addEventListener("mousemove", e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener("mousemove", e => {
+        const rect = canvas.getBoundingClientRect();
+        
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+    
     window.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
 
     function drawClouds() {
         ctx.save();
-        ctx.filter = "blur(15px)";
+        // Disable to run better, looks very slightly less cloud like
+        // ctx.filter = "blur(15px)";
         clouds.forEach(cloud => {
             cloud.puffs.forEach(puff => {
                 const breathFactor = 1 + Math.sin(frame * cloud_parameters.breathSpeed + puff.phase) * cloud_parameters.breathAmplitude;
@@ -216,9 +223,13 @@ function heroEffects() {
             p.vy += (ty - p.y) * particle_parameters.driftStrength;
 
             const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-            if (speed > particle_parameters.maxSpeed) {
-                p.vx = (p.vx / speed) * particle_parameters.maxSpeed;
-                p.vy = (p.vy / speed) * particle_parameters.maxSpeed;
+            const maxSpeed = particle_parameters.maxSpeed;
+
+            if (speed > maxSpeed) {
+                const excess = speed - maxSpeed;
+                const damping = 0.9;
+                p.vx *= damping;
+                p.vy *= damping;
             }
 
             p.x += p.vx;
