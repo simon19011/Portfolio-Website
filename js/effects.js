@@ -15,15 +15,15 @@ function heroEffects() {
         minRadius: 300,
         maxRadius: 700,
         minSpeed: 0.02,
-        maxSpeed: 0.12,
-        minPuffs: 10,
-        maxPuffs: 30,
-        breathAmplitude: 0.08,
-        breathSpeed: 0.002
+        maxSpeed: 0.1,
+        minPuffs: 50,
+        maxPuffs: 100,
+        breathAmplitude: 0.7,
+        breathSpeed: 0.02
     };
 
     const particle_parameters = {
-        count: 4000,
+        count: 3000,
         minSize: 0.01,
         maxSize: 1.2,
         maxSpeed: 0.2,
@@ -38,6 +38,7 @@ function heroEffects() {
     const mouse = { x: null, y: null, radius: 50 };
     let frame = 0;
     let glitchEffect = false;
+    let blurFilter = false;
 
     function resizeCanvas() {
         const dpr = window.devicePixelRatio || 1;
@@ -154,7 +155,9 @@ function heroEffects() {
     function drawClouds() {
         ctx.save();
         // Disable to run better, looks very slightly less cloud like
-        // ctx.filter = "blur(15px)";
+        if (blurFilter) {
+            ctx.filter = "blur(15px)";
+        }
         clouds.forEach(cloud => {
             cloud.puffs.forEach(puff => {
                 const breathFactor = 1 + Math.sin(frame * cloud_parameters.breathSpeed + puff.phase) * cloud_parameters.breathAmplitude;
@@ -187,15 +190,14 @@ function heroEffects() {
 
             const centerX = width / 2;
             const centerY = height / 2;
-            const pullStrength = 0.0000005;
+            const pullStrength = 0.0005;
             cloud.vx += (centerX - cloud.x) * pullStrength;
             cloud.vy += (centerY - cloud.y) * pullStrength;
 
-            const cloudMaxSpeed = 0.05;
             const cloudSpeed = Math.sqrt(cloud.vx * cloud.vx + cloud.vy * cloud.vy);
-            if (cloudSpeed > cloudMaxSpeed) {
-                cloud.vx = (cloud.vx / cloudSpeed) * cloudMaxSpeed;
-                cloud.vy = (cloud.vy / cloudSpeed) * cloudMaxSpeed;
+            if (cloudSpeed > cloud_parameters.maxSpeed) {
+                cloud.vx = (cloud.vx / cloudSpeed) * cloud_parameters.maxSpeed;
+                cloud.vy = (cloud.vy / cloudSpeed) * cloud_parameters.maxSpeed;
             }
         });
         ctx.restore();
