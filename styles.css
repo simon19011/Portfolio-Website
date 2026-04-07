@@ -306,17 +306,40 @@ section {
 .scroll-indicator {
     position: absolute;
     bottom: 0;
-    width: 1px;
+    width: 150px;
     height: 100px;
     overflow: hidden;
     z-index: 3;
 }
 
+.scroll-text {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    color: var(--text-color-heading);
+    font-size: 0.75rem;
+    opacity: 0.75;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: translateX(-50%);
+    z-index: 4;
+    /* animation: scroll-text-bob 2s ease-in-out infinite; */
+}
+
+/* @keyframes scroll-text-bob {
+    0% {transform: translateY(-50%) translateX(-50%);}
+    50% {transform: translateY(50%) translateX(-50%);}
+    100% {transform: translateY(-50%) translateX(-50%);}
+} */
+
 .scroll-reveal {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width: 1px;
     height: 100%;
     border-radius: 10px;
     background: linear-gradient(
@@ -324,11 +347,11 @@ section {
         #00000000 0%,
         var(--text-color-heading) 100%
     );
-    transform: translateY(-100%);
-    animation: scroll-drop 2s ease-out infinite;
+    transform: translateY(-100%) translateX(-50%);
+    animation: scroll-bob 2s ease-in-out infinite;
 }
 
-@keyframes scroll-drop {
+@keyframes scroll-bob {
     0% {transform: translateY(-100%);}
     100% {transform: translateY(100%);}
 }

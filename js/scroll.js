@@ -1,5 +1,5 @@
 export function initScroll() {
-    document.querySelectorAll('nav a.nav-links[href^="#"]').forEach(link => {
+    document.querySelectorAll('.nav-links').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
