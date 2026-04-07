@@ -34,6 +34,7 @@ export function initCarousel() {
 
     document.querySelectorAll(".project").forEach(project => {
         project.addEventListener("click", () => {
+            if (animating) return;
             const clickedIndex = projects.indexOf(project);
             
             if (clickedIndex === -1) return;
@@ -76,7 +77,7 @@ function refreshCarousel() {
     const newIndex = projects.indexOf(currentProject);
 
     currentIndex = newIndex !== -1 ? newIndex : 0;
-    
+
     updateCarousel();
 }
 
@@ -123,6 +124,14 @@ function applyStyling() {
 
     const allProjects = document.querySelectorAll('.project');
 
+    if (animating) {
+        allProjects.forEach(p => p.classList.add("disable-hover"));
+    }
+
+    else {
+        allProjects.forEach(p => p.classList.remove('disable-hover'));
+    }
+
     allProjects.forEach(project => {
         project.classList.remove(
             'position-center',
@@ -136,13 +145,27 @@ function applyStyling() {
     });
 
     const centerProject = projects[currentIndex];
-    const onTransitionEnd = (e) => {
-        if (e.propertyName === "transform") {
+    if (centerProject) {
+        const onTransitionEnd = (e) => {
+            if (e.propertyName === "transform") {
+                animating = false;
+                centerProject.removeEventListener("transitionend", onTransitionEnd);
+                allProjects.forEach(p => p.classList.remove("disable-hover"));
+            }
+        };
+        centerProject.addEventListener("transitionend", onTransitionEnd);
+    
+        // fallback: ensure animating flag resets after 300ms if transitionend doesn't fire
+        setTimeout(() => {
             animating = false;
+            allProjects.forEach(p => p.classList.remove("disable-hover"));
             centerProject.removeEventListener("transitionend", onTransitionEnd);
-        }
-    };
-    centerProject.addEventListener("transitionend", onTransitionEnd);
+        }, 200);
+    } else {
+        animating = false; // fallback for no projects
+    }
+
+    
 
     projects.forEach((project, index) => {
         let offset = index - currentIndex;

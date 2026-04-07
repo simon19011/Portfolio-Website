@@ -385,6 +385,9 @@ section {
     background: none;
     border: none;
     color: var(--text-color);
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     cursor: pointer;
     padding: 10px 15px;
     z-index: 10;
@@ -471,8 +474,8 @@ section {
     transition: opacity 0.35s ease,
                 scale 0.35s ease, 
                 transform 0.35s ease,
-                height 0.35s ease 1.7s,
-                width 0.35s ease 1.35s;
+                height 0.35s ease 0.85s,
+                width 0.35s ease 0.5s;
 }
 
 .project:hover {
@@ -498,15 +501,19 @@ section {
 }
 
 .project-description {
-    opacity: 0;
-    max-height: 0;
+    opacity: 0.65;
     overflow: hidden;
     font-size: 0.65rem;
 }
 
-.project.expanded .project-description {
-    opacity: 0.65;
-    max-height: 200px;
+.project-info {
+    max-height: 0;
+    overflow: visible;
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.project.expanded .project-info {
+    max-height: 400px;
     transition: opacity 0.15s ease,
                 max-height 0.35s ease 1s;
 }
@@ -524,46 +531,27 @@ section {
     display: flex;
     align-items: center;
     gap: 20px;
-    max-height: 0;
-    opacity: 0;
-    padding: 0;
-    transform: scale(0.8);
-    transform-origin: left;
-    transition: 
-        max-height 0.4s ease 0.5s,
-        opacity 0.3s ease 0.5s,
-        transform 0.3s ease 0.5s,
-        padding 0.3s ease 0.5s;
-}
-
-.project.expanded .project-button-container {
-    max-height: 120px;
     opacity: 1;
     padding: 0 0 15px 0;
     transform: scale(1);
-    transition: max-height 0.4s ease 1.35s,
-                opacity 0.3s ease 1.35s,
-                transform 0.3s ease 1.35s,
-                padding 0.3s ease 1.35s;
+    transform-origin: left;
 }
 
 .project-button {
     border: 2px solid var(--text-color-heading);
     font-size: 0.75rem;
-    opacity: 0;
+    opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px 12px 5px 12px;
     gap: 7px;
-    transform: scale(0);
     transition: all 0.35s ease;
 }
 
 .project.expanded .project-button {
     transform: scale(1);
     opacity: 1;
-    transition: transform 0.25s ease, opacity 0.35s ease;
 }
 
 .project:not(.expanded) .project-button {
@@ -637,6 +625,18 @@ section {
 
 .project.position-far:hover {
     transform: translateX(var(--x)) translateZ(20px) scale(0.8);
+}
+
+.project.disable-hover.position-center:hover {
+    transform: translateX(var(--x)) scale(1);
+}
+
+.project.disable-hover.position-adjacent:hover {
+    transform: translateX(var(--x)) scale(1);
+}
+
+.project.disable-hover.position-far:hover {
+    transform: translateX(var(--x)) scale(1);
 }
 
 .project-filters {
