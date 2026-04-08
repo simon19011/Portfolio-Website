@@ -10,22 +10,26 @@ document.addEventListener("DOMContentLoaded", () => {
     initScroll();
 });
 
-// Add scroll animations (put in scroll.js if js is needed)
-// - Project - Vault openning (?)
-// - Technical Skills - Constellation type beat (?)
-// - Contacts - idk yet
-// Add intro animation
+// Format Technical Skills
+
+// Add Contacts background
 
 // Add Hero details/decor
 
 // Add About Me details/decor
 
-// Add Project background animation
 // Add Project details/decor
 
-// Format Technical Skills
-// Add Technical Skills background animation
 // Add Technical Skills details/decor
 
-// Add Contacts background
 // Add Contacts details/decor
+
+// Add Project background animation
+
+// Add Technical Skills background animation
+
+// Add scroll animations (put in scroll.js if js is needed)
+// - Project - Vault openning (?)
+// - Technical Skills - Constellation type beat (?)
+// - Contacts - idk yet
+// Add intro animation

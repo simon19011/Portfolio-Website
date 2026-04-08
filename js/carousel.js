@@ -160,7 +160,7 @@ function applyStyling() {
             animating = false;
             allProjects.forEach(p => p.classList.remove("disable-hover"));
             centerProject.removeEventListener("transitionend", onTransitionEnd);
-        }, 200);
+        }, 10);
     } else {
         animating = false; // fallback for no projects
     }
