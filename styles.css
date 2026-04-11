@@ -488,7 +488,7 @@ section {
     right: 10px;
     width: 40px;
     height: 40px;
-    background-color: #D0B77B;
+    background-color: var(--text-color);
     mask: url("assets/icons/warning.svg") no-repeat center / contain;
     -webkit-mask: url("assets/icons/warning.svg") no-repeat center / contain;
     z-index: 5;
@@ -632,6 +632,10 @@ section {
     z-index: 3;
     color: var(--text-color-heading);
     border: 2px solid var(--text-color-heading);
+}
+
+.project.position-center.wip::after {
+    background-color: var(--text-color-heading);
 }
 
 .project:not(.expanded).position-center:hover {
