@@ -481,6 +481,19 @@ section {
                 width 0.35s ease 0.35s;
 }
 
+.project.wip::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #D0B77B;
+    mask: url("assets/icons/warning.svg") no-repeat center / contain;
+    -webkit-mask: url("assets/icons/warning.svg") no-repeat center / contain;
+    z-index: 5;
+}
+
 .project.expanded {
     height: 550px;
     width: 420px;
