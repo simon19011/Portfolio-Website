@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initScroll();
 });
 
-// Format Technical Skills
-
 // Add Contacts background
 
 // Add Hero details/decor
