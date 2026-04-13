@@ -2,15 +2,20 @@ import { initFilters } from "./filters.js";
 import { initCarousel } from "./carousel.js";
 import { initEffects } from "./effects.js";
 import { initScroll } from "./scroll.js";
+import { initUtil } from "./util.js";
+
+let testing = true;
 
 document.addEventListener("DOMContentLoaded", () => {
     initFilters();
     initCarousel();
     initEffects();
     initScroll();
+    if (testing) {
+        initUtil();
+    }
 });
 
-// Add Contacts background
 
 // Add Hero details/decor
 
@@ -20,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Add Technical Skills details/decor
 
+// Add Contacts background
 // Add Contacts details/decor
 
 // Add Project background animation
