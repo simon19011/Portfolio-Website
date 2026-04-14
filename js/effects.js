@@ -12,7 +12,7 @@ function heroEffects() {
 
     const cloud_parameters = {
         count: 3,
-        minRadius: 300,
+        minRadius: 200,
         maxRadius: 700,
         minSpeed: 0.02,
         maxSpeed: 0.1,
@@ -37,7 +37,7 @@ function heroEffects() {
     const particles = [];
     const mouse = { x: null, y: null, radius: 50 };
     let frame = 0;
-    let glitchEffect = false;
+    let noClear = true;
     let blurFilter = false;
 
     function resizeCanvas() {
@@ -254,7 +254,7 @@ function heroEffects() {
     function animate() {
         frame++;
 
-        if (!glitchEffect) {
+        if (!noClear) {
             ctx.clearRect(0, 0, width, height);
         }
 
