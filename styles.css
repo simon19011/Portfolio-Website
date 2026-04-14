@@ -887,7 +887,7 @@ section {
             rgba(0,0,0,0.9) 45%,
             rgba(0,0,0,1) 70%
         ),
-        url("/assets/backgrounds/contacts-background.jpg");
+        url("assets/backgrounds/contacts-background.jpg");
 
     background-size: cover;
     background-position: center

@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initScroll();
 });
 
-// Add Contacts background
-
 // Add Hero details/decor
 
 // Add About Me details/decor
@@ -20,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Add Technical Skills details/decor
 
+// Add Contacts background - Needs changing?
 // Add Contacts details/decor
 
 // Add Project background animation
