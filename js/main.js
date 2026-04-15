@@ -2,6 +2,7 @@ import { initFilters } from "./filters.js";
 import { initCarousel } from "./carousel.js";
 import { initEffects } from "./effects.js";
 import { initScroll } from "./scroll.js";
+import { initAnimations } from "./animations.js";
 import { initUtil } from "./util.js";
 
 let testing = true;
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initCarousel();
     initEffects();
     initScroll();
+    initAnimations();
     if (testing) {
         initUtil();
     }

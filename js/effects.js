@@ -37,8 +37,21 @@ function heroEffects() {
     const particles = [];
     const mouse = { x: null, y: null, radius: 50 };
     let frame = 0;
-    let noClear = true;
+    let noClear = false;
     let blurFilter = false;
+    let isPaused = true;
+
+    const clearCheckbox = document.getElementById("toggle-trail");
+
+    clearCheckbox.addEventListener("change", () => {
+        noClear = !clearCheckbox.checked;
+    });
+
+    const pauseCheckbox = document.getElementById("toggle-effects");
+
+    pauseCheckbox.addEventListener("change", () => {
+        isPaused = pauseCheckbox.checked;
+    });
 
     function resizeCanvas() {
         const dpr = window.devicePixelRatio || 1;
@@ -252,15 +265,17 @@ function heroEffects() {
     }
 
     function animate() {
-        frame++;
+        if (!isPaused) {
+            frame++;
 
-        if (!noClear) {
-            ctx.clearRect(0, 0, width, height);
+            if (!noClear) {
+                ctx.clearRect(0, 0, width, height);
+            }
+
+            drawClouds();
+            updateParticles();
+            drawParticles();
         }
-
-        drawClouds();
-        updateParticles();
-        drawParticles();
         requestAnimationFrame(animate);
     }
 
