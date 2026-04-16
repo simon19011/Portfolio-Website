@@ -51,6 +51,7 @@ function heroEffects() {
 
     pauseCheckbox.addEventListener("change", () => {
         isPaused = pauseCheckbox.checked;
+        ctx.clearRect(0, 0, width, height);
     });
 
     function resizeCanvas() {
