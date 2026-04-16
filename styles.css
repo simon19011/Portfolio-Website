@@ -172,6 +172,10 @@ section {
     background-color: var(--link-hover-color);
 }
 
+/* * {
+    outline: 1px solid red;
+} */
+
 .hero {
     background: linear-gradient(
         180deg, 
@@ -214,10 +218,13 @@ section {
 
 .hero-title {
     position: relative;
-    display: inline-block;
 }
 
-.hero h1 {
+.hero-title-mask {
+    overflow: hidden;
+}
+
+.hero-title-text {
     font-family: 'SpecialFont', sans-serif;
     font-size: clamp(4rem, 18vw, 6rem);
     color: #ece8b0;
@@ -225,11 +232,18 @@ section {
     padding: 25px;
     position: relative;
     display: inline-block;
+    transform: translateY(100%);
 }
 
-/* * {
-    outline: 1px solid red;
-} */
+.hero-title-text.animate {
+    animation: bottomReveal 1s ease-out forwards;
+}
+
+@keyframes bottomReveal {
+    to {
+        transform: translateY(0%);
+    }
+}
 
 .hero-divider-line {
     position: absolute;
@@ -297,8 +311,8 @@ section {
     height: 100%;
     background-color: var(--decor-color);
     pointer-events: none;
-    -webkit-mask: url('assets/decor/hero_main.svg') no-repeat center / contain;
-    mask: url('assets/decor/hero_main.svg') no-repeat center / contain;
+    -webkit-mask: url('assets/decor/hero_main.svg') no-repeat center top / 100% auto;
+    mask: url('assets/decor/hero_main.svg') no-repeat center top / 100% auto;
     clip-path: inset(0 50% 0 50%);
 }
 
@@ -345,7 +359,10 @@ section {
 }
 
 @media (max-width: 600px) {
-    .hero h1::after {
+    .hero-divider {
+        visibility: hidden;
+    }
+    .hero-divider-line {
         visibility: hidden;
     }
     .hero p {

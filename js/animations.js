@@ -33,6 +33,10 @@ async function introAnimations() {
     await wait(400);
 
     document.querySelector(".hero-divider").classList.add("animate");
+
+    await wait(1000);
+
+    document.querySelector(".hero-title-text").classList.add("animate");
 }
 
 function heroAniamtions() {
