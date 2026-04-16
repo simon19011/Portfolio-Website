@@ -7,7 +7,7 @@ async function setupAnimations() {
     //Plays each animation 
     //Controls timing/flags between each sections animations
     await waitForLoad();
-    await introAnimations();s
+    await introAnimations();
 }
 
 function wait(ms) {
@@ -25,13 +25,14 @@ function waitForLoad() {
 }
 
 async function introAnimations() {
-    const divider = document.querySelector(".hero-divider");
-    const title = document.querySelector(".hero h1");
-    const subtitle = document.querySelector(".hero p");
 
     await wait(1000);
 
-    divider.classList.add("animate");
+    document.querySelector(".hero-divider-line").classList.add("animate");
+
+    await wait(400);
+
+    document.querySelector(".hero-divider").classList.add("animate");
 }
 
 function heroAniamtions() {

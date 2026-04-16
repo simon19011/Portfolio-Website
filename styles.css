@@ -227,13 +227,74 @@ section {
     display: inline-block;
 }
 
-.hero-divider {
+/* * {
+    outline: 1px solid red;
+} */
+
+.hero-divider-line {
     position: absolute;
     left: 50%;
     top: 100%;
-    transform: translate(-50%, -40px);
     width: 100%;
-    height: 250px;
+    height: 100%;
+    transform: translate(-50%, -40px);
+    pointer-events: none;
+}
+
+.hero-divider-line::before,
+.hero-divider-line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 0%;
+    background-color: var(--decor-color);
+    transform: translate(-50%, -50%);
+}
+
+.hero-divider-line.animate::before {
+    animation: lineGrow 0.2s ease-out forwards,
+               lineLeft 0.4s ease-out 0.4s forwards,
+               lineShrink 0.2s ease-out 1s forwards;
+}
+
+.hero-divider-line.animate::after {
+    animation: lineGrow 0.2s ease-out forwards,
+               lineRight 0.4s ease-out 0.4s forwards,
+               lineShrink 0.2s ease-out 1s forwards;
+}
+
+@keyframes lineGrow {
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes lineShrink {
+    to {
+        height: 0%;
+    }
+}
+
+@keyframes lineLeft {
+    to {
+        left: 0%;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes lineRight {
+    to {
+        left: 100%;
+        transform: translateY(-50%);
+    }
+}
+
+.hero-divider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: var(--decor-color);
     pointer-events: none;
     -webkit-mask: url('assets/decor/hero_main.svg') no-repeat center / contain;
@@ -242,7 +303,7 @@ section {
 }
 
 .hero-divider.animate {
-    animation: dividerReveal 0.8s ease-out forwards;
+    animation: dividerReveal 0.4s ease-out forwards;
 }
 
 @keyframes dividerReveal {
@@ -327,7 +388,7 @@ section {
     align-items: center;
     text-align: center;
     gap: 100px;
-    padding: 100px 0 0 0;
+    padding: 110px 0 0 0;
 }
 
 .hero-link {
