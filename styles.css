@@ -222,6 +222,8 @@ section {
 
 .hero-title-mask {
     overflow: hidden;
+    position: relative;
+    clip-path: inset(0 0 15% 0);
 }
 
 .hero-title-text {
@@ -229,6 +231,7 @@ section {
     font-size: clamp(4rem, 18vw, 6rem);
     color: #ece8b0;
     margin: 0;
+    opacity: 0;
     padding: 25px;
     position: relative;
     display: inline-block;
@@ -242,6 +245,7 @@ section {
 @keyframes bottomReveal {
     to {
         transform: translateY(0%);
+        opacity: 1;
     }
 }
 
@@ -329,14 +333,27 @@ section {
 .hero p {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    gap: 5em;
+    gap: clamp(3rem, 15vw, 6rem);
     align-items: center;
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 4vw, 1.2rem); 
     margin: 0;
     color: var(--text-color-heading);
-    opacity: 1;
-    width: 100%;
+    opacity: 0;
+    transform: translateY(-25%);
     box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.hero p.animate {
+    animation: topReveal 0.4s ease-out forwards;
+}
+
+@keyframes topReveal {
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 .hero p .left {
@@ -358,7 +375,43 @@ section {
     visibility: hidden;
 }
 
-@media (max-width: 600px) {
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+    padding: 110px 0 0 0;
+    opacity: 0;
+    transform: translateY(-25%);
+    pointer-events: none;
+}
+
+.hero-buttons.animate {
+    animation: topReveal 0.4s ease-out forwards;
+}
+
+@media (max-width: 650px) {
     .hero-divider {
         visibility: hidden;
     }
@@ -382,30 +435,9 @@ section {
         justify-self: center;
         white-space: normal;
     }
-}
-
-#hero-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 100px;
-    padding: 110px 0 0 0;
+    .hero-buttons {
+        padding: 25px 0 0 0;
+    }
 }
 
 .hero-link {
@@ -416,7 +448,7 @@ section {
     text-align: center;
     background-color: var(--text-color-heading);
     color: #000000;
-    padding: 10px 40px;
+    padding: 15px 60px;
     cursor: pointer;
     gap: 10px;
     transition: all 0.35s ease;
@@ -452,6 +484,7 @@ section {
     width: 150px;
     height: 100px;
     overflow: hidden;
+    opacity: 0;
     z-index: 3;
 }
 
@@ -469,14 +502,29 @@ section {
     -ms-user-select: none;
     transform: translateX(-50%);
     z-index: 4;
-    /* animation: scroll-text-bob 2s ease-in-out infinite; */
+    opacity: 0;
 }
 
-/* @keyframes scroll-text-bob {
-    0% {transform: translateY(-50%) translateX(-50%);}
-    50% {transform: translateY(50%) translateX(-50%);}
-    100% {transform: translateY(-50%) translateX(-50%);}
-} */
+@keyframes scrollTextBob {
+    0% {transform: translateY(0%) translateX(-50%);}
+    50% {transform: translateY(25%) translateX(-50%);}
+    100% {transform: translateY(0%) translateX(-50%);}
+}
+
+.scroll-indicator.animate {
+    animation: scrollReveal 0.4s linear forwards;
+}
+
+.scroll-text.animate {
+    animation: scrollReveal 0.4s linear forwards,
+                scrollTextBob 2s ease-in-out 5s infinite;
+}
+
+@keyframes scrollReveal {
+    to {
+        opacity: 1;
+    }
+}
 
 .effects-wrapper {
     position: absolute;

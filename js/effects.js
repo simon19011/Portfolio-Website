@@ -39,7 +39,7 @@ function heroEffects() {
     let frame = 0;
     let noClear = false;
     let blurFilter = false;
-    let isPaused = true;
+    let isPaused = false;
 
     const clearCheckbox = document.getElementById("toggle-trail");
 

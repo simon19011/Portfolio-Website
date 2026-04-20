@@ -37,6 +37,20 @@ async function introAnimations() {
     await wait(1000);
 
     document.querySelector(".hero-title-text").classList.add("animate");
+
+    await wait(1000);
+
+    document.querySelector(".hero p").classList.add("animate");
+
+    await wait(200);
+
+    document.querySelector(".hero-buttons").classList.add("animate");
+
+    await wait(1000);
+
+    document.querySelector(".scroll-indicator").classList.add("animate");
+
+    document.querySelector(".scroll-text").classList.add("animate");
 }
 
 function heroAniamtions() {
