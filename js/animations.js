@@ -18,7 +18,9 @@ function waitForLoad() {
     return new Promise(resolve => {
         if (document.readyState === "complete") {
             resolve();
-        } else {
+        } 
+        
+        else {
             window.addEventListener("load", resolve);
         }
     });

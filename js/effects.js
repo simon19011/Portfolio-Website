@@ -44,13 +44,13 @@ function heroEffects() {
     const clearCheckbox = document.getElementById("toggle-trail");
 
     clearCheckbox.addEventListener("change", () => {
-        noClear = !clearCheckbox.checked;
+        noClear = clearCheckbox.checked;
     });
 
     const pauseCheckbox = document.getElementById("toggle-effects");
 
     pauseCheckbox.addEventListener("change", () => {
-        isPaused = pauseCheckbox.checked;
+        isPaused = !pauseCheckbox.checked;
         ctx.clearRect(0, 0, width, height);
     });
 
