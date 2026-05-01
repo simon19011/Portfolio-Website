@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initUtil(testing);
 });
 
-
-// Finish About scroll aniamtions
-
 // Add Project details/decor
 
 // Add Technical Skills details/decor
