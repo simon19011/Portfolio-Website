@@ -1,8 +1,8 @@
 import { initFilters } from "./filters.js";
 import { initCarousel } from "./carousel.js";
 import { initEffects } from "./effects.js";
-import { initScroll } from "./scroll.js";
 import { initAnimations } from "./animations.js";
+import { initScroll } from "./scroll.js";
 import { initUtil } from "./util.js";
 
 let testing = true;
@@ -13,15 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initEffects();
     initScroll();
     initAnimations();
-    if (testing) {
-        initUtil();
-    }
+    initUtil(testing);
 });
 
 
-// Add Hero details/decor
-
-// Add About Me details/decor
+// Finish About scroll aniamtions
 
 // Add Project details/decor
 
