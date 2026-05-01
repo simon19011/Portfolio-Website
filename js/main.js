@@ -5,7 +5,7 @@ import { initAnimations } from "./animations.js";
 import { initScroll } from "./scroll.js";
 import { initUtil } from "./util.js";
 
-let testing = true;
+let testing = false;
 
 document.addEventListener("DOMContentLoaded", () => {
     initFilters();
