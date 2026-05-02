@@ -679,6 +679,7 @@ h2 {
 .about-text {
     width: 50%;
     gap: clamp(4rem, 10vw,7rem);
+    padding: 1%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -786,16 +787,17 @@ h2 {
 }
 
 .about-image {
-    height: 100%;
     width: 50%;
-    padding: 1%;
     display: flex;
     justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     z-index: 2;
 }
 
 .about-polaroid {
+    width: 80%;
+    max-width: 500px;
     padding: 30px;
     display: flex;
     justify-content: space-between;
@@ -817,8 +819,9 @@ h2 {
 }
 
 .polaroid-image {
-    height: 500px;
-    width: 500px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     outline: 1px solid #00000031;
 }
 
@@ -838,6 +841,15 @@ h2 {
     .about-title-text {
         font-size: clamp(1.6rem, 8vw, 3rem);
         margin-bottom: -10px;
+    }
+
+    .about-image {
+        width: 100%;
+        padding: 10%;
+    }
+
+    .about-polaroid {
+        width: clamp(200px, 60vw, 350px);
     }
 }
 

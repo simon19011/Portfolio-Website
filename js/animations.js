@@ -86,6 +86,8 @@ async function heroAnimations() {
 }
 
 async function aboutAnimations() {
+    await wait(500);
+
     document.querySelector(".about-divider-line").classList.add("animate");
 
     document.querySelector(".about-divider").classList.add("animate");

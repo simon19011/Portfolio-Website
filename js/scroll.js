@@ -57,7 +57,7 @@ export function spyScroll() {
         });
     }, {
         root: null,
-        threshold: [0.6, 0.75],
+        threshold: [0.3, 0.75],
         rootMargin: "-20% 0px -20% 0px"
     });
 
