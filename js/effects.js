@@ -1,5 +1,6 @@
 export function initEffects() {
     heroEffects();
+    projectsEffects();
 }
 
 // Particle effects for the hero
@@ -9,6 +10,34 @@ function heroEffects() {
 
     let width = window.innerWidth;
     let height = window.innerHeight;
+
+    const heroSection = document.getElementById("home")
+    let isVisible = true;
+    let animationId = null;
+
+    function runLoop() {
+        if (isVisible && !isPaused && !animationId) {
+            animate();
+        }
+
+        if ((!isVisible || isPaused) && animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+            runLoop();
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    if (heroSection) {
+        observer.observe(heroSection);
+    };
 
     const cloud_parameters = {
         count: 3,
@@ -52,6 +81,7 @@ function heroEffects() {
     pauseCheckbox.addEventListener("change", () => {
         isPaused = !pauseCheckbox.checked;
         ctx.clearRect(0, 0, width, height);
+        runLoop();
     });
 
     function resizeCanvas() {
@@ -266,20 +296,115 @@ function heroEffects() {
     }
 
     function animate() {
-        if (!isPaused) {
-            frame++;
+        frame++;
 
-            if (!noClear) {
-                ctx.clearRect(0, 0, width, height);
-            }
-
-            drawClouds();
-            updateParticles();
-            drawParticles();
+        if (!noClear) {
+            ctx.clearRect(0, 0, width, height);
         }
-        requestAnimationFrame(animate);
+        
+        drawClouds();
+        updateParticles();
+        drawParticles();
+    
+        animationId = requestAnimationFrame(animate);
     }
 
     animate();
 }
 
+function projectsEffects() {
+    const canvas = document.getElementById("projects-background");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const center = () => ({
+        x: canvas.getBoundingClientRect().width / 2,
+    y: canvas.getBoundingClientRect().height / 2
+    });
+
+    const circleConfigs = [
+        { radius: 300, lineWidth: 4, orbCount: 0, rotate: false, speed: 0},
+        { radius: 310, lineWidth: 1, orbCount: 0, rotate: false, speed: 0},
+        { radius: 400, lineWidth: 1, orbCount: 3, rotate: true, speed: 0.0005, minOrbSize: 5, maxOrbSize: 30},
+        { radius: 800, lineWidth: 1, orbCount: 2, rotate: true, speed: 0.0001, minOrbSize: 40, maxOrbSize: 100},
+    ]
+
+    class OrbitCircle {
+        constructor(config) {
+            this.radius = config.radius;
+            this.lineWidth = config.lineWidth ?? 1;
+            this.orbCount = config.orbCount;
+            this.rotate = config.rotate;
+            this.speed = config.speed;
+
+            this.minOrbSize = config.minOrbSize ?? 2;
+            this.maxOrbSize = config.maxOrbSize ?? 4;
+
+            this.angle = Math.random() * Math.PI * 2;
+
+            this.orbs = [];
+            for (let i = 0; i < this.orbCount; i++) {
+                this.orbs.push({
+                    offset: Math.random() * Math.PI * 2,
+                    size: this.minOrbSize + Math.random() * (this.maxOrbSize - this.minOrbSize)
+                });
+            }
+        }
+
+        update() {
+            if (this.rotate) {
+                this.angle += this.speed;
+            }
+        }
+
+        draw() {
+            const { x, y } = center();
+
+            ctx.beginPath();
+            ctx.arc(x, y, this.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = "rgb(208, 183, 123)";
+            ctx.lineWidth = this.lineWidth;
+            ctx.stroke();
+
+            this.orbs.forEach(orb => {
+                const a = this.angle + orb.offset;
+
+                const px = x + Math.cos(a) * this.radius;
+                const py = y + Math.sin(a) * this.radius;
+
+                ctx.beginPath();
+                ctx.arc(px, py, orb.size, 0, Math.PI * 2);
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = "rgba(208,183,123)";
+                ctx.fill();
+            });
+        }
+    }
+
+    const circles = circleConfigs.map(cfg => new OrbitCircle(cfg));
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        circles.forEach(c => {
+            c.update();
+            c.draw();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
