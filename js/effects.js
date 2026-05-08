@@ -24,6 +24,10 @@ function heroEffects() {
             cancelAnimationFrame(animationId);
             animationId = null;
         }
+
+        if (isPaused) {
+            ctx.clearRect(0, 0, width, height);
+        }
     }
 
     const observer = new IntersectionObserver((entries) => {
@@ -32,7 +36,7 @@ function heroEffects() {
             runLoop();
         });
     }, {
-        threshold: 0.2
+        threshold: 0.1
     });
 
     if (heroSection) {
@@ -68,19 +72,20 @@ function heroEffects() {
     let frame = 0;
     let noClear = false;
     let blurFilter = false;
-    let isPaused = false;
+    let isPaused = true;
 
+    const pauseCheckbox = document.getElementById("toggle-effects");
     const clearCheckbox = document.getElementById("toggle-trail");
+    pauseCheckbox.checked = !isPaused;
+    clearCheckbox.disabled = isPaused;
 
     clearCheckbox.addEventListener("change", () => {
         noClear = clearCheckbox.checked;
     });
 
-    const pauseCheckbox = document.getElementById("toggle-effects");
-
     pauseCheckbox.addEventListener("change", () => {
         isPaused = !pauseCheckbox.checked;
-        ctx.clearRect(0, 0, width, height);
+        clearCheckbox.disabled = isPaused;
         runLoop();
     });
 
@@ -316,6 +321,34 @@ function projectsEffects() {
     const canvas = document.getElementById("projects-background");
     const ctx = canvas.getContext("2d");
 
+    const projectsSection = document.getElementById("projects")
+    let isVisible = true;
+    let animationId = null;
+
+    function runLoop() {
+        if (isVisible && !animationId) {
+            animate();
+        }
+
+        if (!isVisible && animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+            runLoop();
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    if (projectsSection) {
+        observer.observe(projectsSection);
+    };
+
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
@@ -403,7 +436,7 @@ function projectsEffects() {
             c.draw();
         });
 
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
     }
 
     animate();

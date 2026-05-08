@@ -16,6 +16,17 @@ export function initCarousel() {
         animating = false;
     });
 
+    document.getElementById("projects").addEventListener("click", (e) => {
+        if (!expanded) return;
+
+        const centerProject = projects[currentIndex];
+        
+        if (!centerProject.contains(e.target)) {
+            centerProject.classList.toggle("expanded");
+            expanded = centerProject.classList.contains("expanded");
+        }
+    });
+
     document.querySelectorAll(".project-button").forEach(button => {
         button.addEventListener("click", (e) => {
             e.stopPropagation();

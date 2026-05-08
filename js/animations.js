@@ -58,7 +58,7 @@ async function navAnimations() {
 }
 
 async function heroAnimations() {
-    await wait(1000);
+    await wait(300);
 
     document.querySelector(".hero-divider-line").classList.add("animate");
 
@@ -66,7 +66,7 @@ async function heroAnimations() {
 
     document.querySelector(".hero-divider").classList.add("animate");
 
-    await wait(1000);
+    await wait(700);
 
     document.querySelector(".hero-title-text").classList.add("animate");
 
@@ -78,7 +78,7 @@ async function heroAnimations() {
 
     document.querySelector(".hero-buttons").classList.add("animate");
 
-    await wait(2000);
+    await wait(1000);
 
     document.querySelector(".scroll-indicator").classList.add("animate");
 
@@ -86,17 +86,17 @@ async function heroAnimations() {
 }
 
 async function aboutAnimations() {
-    await wait(500);
+    await wait(300);
 
     document.querySelector(".about-divider-line").classList.add("animate");
 
     document.querySelector(".about-divider").classList.add("animate");
 
-    await wait(2000);
+    await wait(1100);
     
     document.querySelector(".about-title-text").classList.add("animate");
 
-    await wait(1000);
+    await wait(700);
 
     document.querySelector(".about-body-text").classList.add("animate");
 

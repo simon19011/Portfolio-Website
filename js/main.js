@@ -16,13 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initUtil(testing);
 });
 
-// Add Project details/decor
+// Add Project Observer to limit aniamtions when not looking
 
 // Add Technical Skills details/decor
 
 // Add Contacts details/decor
-
-// Add Project background animation
 
 // Add Technical Skills background animation
 
@@ -31,3 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // - Technical Skills - Constellation type beat (?)
 // - Contacts - idk yet
 // Add intro animation
+
+// Notes
+// Decrease animation time?
+// Projects - close expanded on click anywhere else, not just another project
