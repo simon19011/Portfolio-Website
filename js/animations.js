@@ -106,7 +106,33 @@ async function aboutAnimations() {
 }
 
 async function projectsAnimations() {
-    return;
+
+    document.querySelector(".projects-reveal-screen").style.pointerEvents = "auto";
+
+    await wait(300);
+
+    document.querySelectorAll(".symbol-1").forEach(el => {
+        el.classList.add("animate");
+    });
+
+    await wait(1500);
+
+    document.querySelectorAll(".symbol-2").forEach(el => {
+        el.classList.add("animate");
+    });
+
+    await wait(1000);
+
+    document.querySelector(".left-half").classList.add("animate");
+    document.querySelector(".right-half").classList.add("animate");
+
+    await wait(1000);
+
+    document.querySelector(".projects-reveal-screen").classList.add("animate");
+
+    await wait(1500);
+
+    document.querySelector(".projects-reveal-screen").style.pointerEvents = "none";
 }
 
 async function skillsAnimations() {

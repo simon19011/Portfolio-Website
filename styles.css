@@ -160,6 +160,24 @@ h2 {
     }
 }
 
+@keyframes rotateClockwise {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+}
+
+@keyframes rotateCounter {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(-70deg);
+    }
+}
+
 /*----------HOME----------*/
 
 #home {
@@ -916,6 +934,117 @@ h2 {
     text-align: center;
     gap: 20px;
 }
+
+.projects-reveal-screen {
+    position: absolute;
+    overflow: hidden;
+    inset: 0;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.projects-half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            0deg,
+            #120d07 10%,
+            var(--background-color) 100%
+        );
+    transition: transform 1.5s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.left-half {
+    left: 0;
+}
+
+.right-half {
+    right: 0;
+}
+
+.left-half::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--decor-color);
+    filter: drop-shadow(#e2bc62 0 0 10px);
+    transform: translateX(50%);
+}
+
+.right-half::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--decor-color);
+    filter: drop-shadow(#e2bc62 0 0 10px);
+    transform: translateX(-50%);
+}
+
+.left-half.animate::after,
+.right-half.animate::before {
+    animation: lineGrow 0.4s ease-out forwards;
+}
+
+.symbol-half-container {
+    position: absolute;
+    inset: 0;
+}
+
+.projects-symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(#e2bc62 0 0 20px);
+    transition: transform 1.5s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.symbol-1 {
+    width: clamp(880px, 30vw, 1440px);
+    height: clamp(880px, 30vw, 1440px);
+}
+
+.symbol-2 {
+    width: clamp(220px, 30vw, 360px);
+    height: clamp(220px, 30vw, 360px);
+}
+
+.symbol-1.animate {
+    animation: rotateClockwise 1.5s ease-out forwards;
+}
+
+.symbol-2.animate {
+    animation: rotateCounter 0.7s ease-out forwards;
+}
+
+.left-clip {
+    left: 100%;
+}
+
+.right-clip {
+    left: 0%;
+}
+
+.projects-reveal-screen.animate .left-half {
+    transform: translateX(-100%);
+}
+
+.projects-reveal-screen.animate .right-half {
+    transform: translateX(100%);
+}
+
+
 
 #projects-background {
     position: absolute;
