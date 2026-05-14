@@ -130,6 +130,8 @@ async function projectsAnimations() {
 
     document.querySelector(".projects-reveal-screen").classList.add("animate");
 
+    document.querySelector(".project-effects").classList.add("animate");
+
     await wait(1500);
 
     document.querySelector(".projects-reveal-screen").style.pointerEvents = "none";
