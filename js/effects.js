@@ -370,7 +370,7 @@ function projectsEffects() {
     const circleConfigs = [
         { radius: 300, lineWidth: 4, orbCount: 0, rotate: false, speed: 0},
         { radius: 310, lineWidth: 1, orbCount: 0, rotate: false, speed: 0},
-        { radius: 400, lineWidth: 1, orbCount: 3, rotate: true, speed: 0.0005, minOrbSize: 5, maxOrbSize: 30},
+        { radius: 400, lineWidth: 1, orbCount: 3, rotate: true, speed: 0.0005, minOrbSize: 10, maxOrbSize: 50},
         { radius: 800, lineWidth: 1, orbCount: 2, rotate: true, speed: 0.0001, minOrbSize: 40, maxOrbSize: 100},
     ]
 
@@ -419,9 +419,9 @@ function projectsEffects() {
 
                 ctx.beginPath();
                 ctx.arc(px, py, orb.size, 0, Math.PI * 2);
-                ctx.shadowBlur = 30;
-                ctx.shadowColor = "rgba(208,183,123)";
                 ctx.fill();
+                ctx.strokeStyle = "rgb(208, 183, 123)";
+                ctx.stroke();
             });
         }
     }
